@@ -25,7 +25,7 @@ const CharacterSchema = new Schema<ICharacter>({
     hair_color: { type: String, required: true },
     height: { type: String, required: true },
     homeworld: { type: Number, required: true },
-    id: { type: Number, required: true, unique: true },
+    id: { type: Number, required: true, unique: [true, "Duplicate ID"] },
     image: { type: String, required: true },
     mass: { type: String, required: true },
     name: { type: String, required: true },

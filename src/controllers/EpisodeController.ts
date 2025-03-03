@@ -9,8 +9,11 @@ export default class EpisodeController {
 
     @Post('/v1/films')
     async addFilm(@Body() newFilm: IStarWarsEpisode, @Res() res: Response) {
-        return await this.episodeService.addFilm(newFilm)
+        const result: Response =  await this.episodeService.addFilm(newFilm)
+            .then(() => res.status(200).json({result}))
             .catch(err => res.status(409).send(err.message));
+
+        return result;
     }
 
     @Get('/v1/films')

@@ -23,7 +23,7 @@ const StarWarsEpisodeSchema = new Schema<IStarWarsEpisode>({
     director: { type: String, required: true },
     edited: { type: String, required: true },
     episode_id: { type: Number, required: true },
-    id: { type: Number, required: true, unique: true },
+    id: { type: Number, required: true, unique: [true, "Duplicate ID"] },
     opening_crawl: { type: String, required: true },
     planets: { type: [Number], required: true },
     producer: { type: String, required: true },

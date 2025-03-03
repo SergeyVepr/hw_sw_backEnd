@@ -10,9 +10,11 @@ export default class PeopleController {
 
     @Post('/v1/peoples')
     async addPeople(@Body() newPeople: ICharacter, @Res() res: Response) {
-        const result = await this.peopleService.addPeople(newPeople)
+        const result: Response = await this.peopleService.addPeople(newPeople)
+            .then(() => res.status(200).json({result}))
             .catch(err => res.status(409).send(err.message));
-        res.status(200).json({result});
+
+        return result;
     }
 
     @Get('/v1/peoples')

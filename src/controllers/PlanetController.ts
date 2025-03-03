@@ -11,9 +11,12 @@ export class PlanetController {
 
     @Post('/v1/planets')
     async addPlanet(@Body() newPlanet: IPlanet, @Res() res: Response) {
-        const result = await this.planetService.addPlanet(newPlanet)
-            .catch(err => res.status(409).send(err.message));
-        res.status(200).json({result});
+        const result: Response = await this.planetService.addPlanet(newPlanet)
+            .then((b) => res.status(200).json({result}))
+            .catch(err =>  res.status(409).send(err.message));
+
+        return result;
+
     }
 
     @Get('/v1/planets')

@@ -21,7 +21,7 @@ const PlanetSchema = new Schema<IPlanet>({
     diameter: { type: String, required: true },
     edited: { type: String, required: true },
     gravity: { type: String, required: true },
-    id: { type: Number, required: true, unique: true },
+    id: { type: Number, required: true, unique: [true, "Duplicate ID"] },
     name: { type: String, required: true },
     orbital_period: { type: String, required: true },
     population: { type: String, required: true },
