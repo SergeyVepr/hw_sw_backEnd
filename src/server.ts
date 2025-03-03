@@ -9,7 +9,7 @@ import {PlanetController} from "./controllers/PlanetController";
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI!, {dbName: "starWars"})
+mongoose.connect(process.env.MONGO_URI!)
     .then(() => console.log("Connected to MongoDB"))
     .catch((err) =>{
         console.error('MongoDb connection error: ' + err);
