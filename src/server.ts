@@ -6,6 +6,7 @@ import * as mongoose from "mongoose";
 import EpisodeController from "./controllers/EpisodeController";
 import PeopleController from "./controllers/PeopleController";
 import {PlanetController} from "./controllers/PlanetController";
+import cors from 'cors';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ mongoose.connect(process.env.MONGO_URI!)
 const app: Application = express();
 const PORT = 8080;
 
+app.use(cors());
 app.use(express.json());
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
